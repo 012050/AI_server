@@ -1,9 +1,12 @@
 from flask import Flask, request, jsonify
-import threading, time
-from DataProcess import now_time, convert_hls_to_mp4
+import threading
+import time
 import requests
 import json
 import os
+
+from DataProcess import now_time, convert_hls_to_mp4
+from plz import save_multiple_streams
 
 program_counter = 0
 
@@ -33,19 +36,6 @@ target_second_1 = 30
 def home():
     return "Flask Server is Running"
 
-@app.route('/count', methods=['POST'])
-def count():
-    data = request.get_json()
-    print(data)
-    count = data.get('count')
-    fin = data.get('check')
-    if fin == "fin":
-        print("데이터 전송 완료")
-    else:
-        print(f"\n\n\n\n{count}")
-    return jsonify({'message': 'Success'})
-
-
 # 스레드로 동작할 함수
 def time_check_thread():
     while True:
@@ -56,8 +46,9 @@ def time_check_thread():
         print(f"현재 시간: {current_hour}시 {current_minute}분 {current_second}초")
 
         # 타겟 시간에 도달하면 사용자 함수 호출
-        if current_minute == target_minute or current_second == target_second_0 or current_second == target_second_1:
-            send_data()
+        if current_second%20 == 0:
+            # send_data()
+            save_multiple_streams()
 
         time.sleep(1)
 
