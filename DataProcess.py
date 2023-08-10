@@ -1,5 +1,3 @@
-import time
-import subprocess
 import os
 import ffmpeg
 
@@ -22,6 +20,3 @@ def convert_hls_to_mp4(hls_url="https://klivecon-orig.fastedge.net/webrtc/test/p
         print(f"Video saved as {output_file}")
     except ffmpeg.Error as e:
         print(f"Error occurred: {e}")
-
-def now_time():
-    return time.strftime("%Y-%m-%d-%H:%M:%S", time.localtime(time.time()))
