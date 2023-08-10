@@ -20,6 +20,3 @@ def save_multiple_streams():
     
     for process in processes:
         process.join()
-
-# if __name__ == '__main__':
-#     save_multiple_streams()
