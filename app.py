@@ -5,7 +5,8 @@ import requests
 import json
 import os
 
-from DataProcess import now_time, convert_hls_to_mp4
+from DataProcess import convert_hls_to_mp4
+from TimeControl import time_check
 from plz import save_multiple_streams
 
 program_counter = 0
@@ -37,20 +38,6 @@ def home():
     return "Flask Server is Running"
 
 # 스레드로 동작할 함수
-def time_check_thread():
-    while True:
-        current_time = time.localtime()
-        current_hour = current_time.tm_hour
-        current_minute = current_time.tm_min
-        current_second = current_time.tm_sec
-        print(f"현재 시간: {current_hour}시 {current_minute}분 {current_second}초")
-
-        # 타겟 시간에 도달하면 사용자 함수 호출
-        if current_second%20 == 0:
-            # send_data()
-            save_multiple_streams()
-
-        time.sleep(1)
 
 if __name__ == '__main__':
     # Flask 서버 스레드 시작
@@ -58,5 +45,5 @@ if __name__ == '__main__':
     server_thread.start()
 
     # 시간 확인 스레드 시작
-    time_check_thread = threading.Thread(target=time_check_thread)
+    time_check_thread = threading.Thread(target=time_check)
     time_check_thread.start()
