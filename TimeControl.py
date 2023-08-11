@@ -13,7 +13,6 @@ def time_check():
 
         # 타겟 시간에 도달하면 사용자 함수 호출
         if current_second%20 == 0:
-            # send_data()
-            save_multiple_streams()
+            send_data()
 
         time.sleep(1)
