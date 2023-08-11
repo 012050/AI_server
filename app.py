@@ -13,12 +13,6 @@ app.config['VIDEO_FOLDER'] = video_folder
 if not os.path.exists(video_folder):
     os.makedirs(video_folder)
 
-# 타겟 시간 설정
-target_hour = 1
-target_minute = 30
-target_second_0 = 0
-target_second_1 = 30
-
 # 라우트 생성 (실제로 사용하지 않지만 Flask 서버를 동작시키기 위해 빈 라우트 추가)
 @app.route('/')
 def home():
