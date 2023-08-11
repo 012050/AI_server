@@ -1,13 +1,8 @@
 from flask import Flask, request, jsonify
 import threading
-import time
-import requests
-import json
 import os
 
-from DataProcess import convert_hls_to_mp4
 from TimeControl import time_check
-from plz import save_multiple_streams
 
 program_counter = 0
 
@@ -17,14 +12,6 @@ app.config['VIDEO_FOLDER'] = video_folder
 
 if not os.path.exists(video_folder):
     os.makedirs(video_folder)
-
-# 사용자 함수: 데이터를 전송하는 함수
-def send_data(UserID='abcd', VideoID='test_video_id', VideoURL='https://klivecon-orig.fastedge.net/webrtc/test/playlist.m3u8', VideoTime='10'):
-    global program_counter
-    program_counter += 1
-    print("영상 다운로드 시작")
-    print(f"hls_url='{VideoURL}', output_file='{VideoID}', duration='{VideoTime}'")
-    convert_hls_to_mp4(hls_url=VideoURL, output_file=UserID+VideoID+str(program_counter), duration=int(VideoTime))
 
 # 타겟 시간 설정
 target_hour = 1
