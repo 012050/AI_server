@@ -4,14 +4,11 @@ import os
 
 from TimeControl import time_check
 
-program_counter = 0
-
 app = Flask(__name__)
-video_folder = 'videos'
-app.config['VIDEO_FOLDER'] = video_folder
-
-if not os.path.exists(video_folder):
-    os.makedirs(video_folder)
+VIDEO_FOLDER = 'videos'
+app.config['VIDEO_FOLDER'] = VIDEO_FOLDER
+if not os.path.exists(VIDEO_FOLDER):
+    os.makedirs(VIDEO_FOLDER)
 
 # 라우트 생성 (실제로 사용하지 않지만 Flask 서버를 동작시키기 위해 빈 라우트 추가)
 @app.route('/')
