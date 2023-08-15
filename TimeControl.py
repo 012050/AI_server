@@ -2,7 +2,7 @@ import time
 
 from flask import request
 
-from DataProcess import reqeust_data
+from DataProcess import request_data
 
 
 def now_time():
@@ -18,7 +18,7 @@ def time_check():
 
         # 타겟 시간에 도달하면 사용자 함수 호출
         if current_second%20 == 0:
-            video_data = reqeust_data(url='http://localhost:5000/inteligence/activity/')
+            video_data = request_data(url='http://localhost:5000/inteligence/activity/')
             print(video_data)
             print("20초마다 호출되는 함수")
 
