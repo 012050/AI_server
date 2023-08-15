@@ -5,7 +5,7 @@ video_url = "https://klivecon-orig.fastedge.net/webrtc/test/playlist.m3u8"
 
 @app.route('/inteligence/activity/', methods=['POST'])
 def count():
-    data = {"A": video_url, "B": video_url, "C": video_url, "D": video_url, "E": video_url}
+    data = {"TEST_A": video_url, "TEST_B": video_url, "TEST_C": video_url, "TEST_D": video_url, "TEST_E": video_url}
     # return jsonify({'message': 'Success'})
     return jsonify(data)
 
