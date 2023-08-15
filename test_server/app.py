@@ -8,7 +8,7 @@ video_url = "https://klivecon-orig.fastedge.net/webrtc/test/playlist.m3u8"
 def count():
     data = {}
     for i in range(1, the_number + 1):
-        data["TEST_"+str(i)] = video_url
+        data["TEST_0"+str(i)] = video_url
     return jsonify(data)
 
 if __name__ == '__main__':
