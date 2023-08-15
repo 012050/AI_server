@@ -48,7 +48,7 @@ def send_data(url='http://localhost:5000/inteligence/activity/'):
         print(e)
         return 404
 
-def reqeust_data(url='http://localhost:5000/inteligence/activity/'):
+def request_data(url='http://localhost:5000/inteligence/activity/'):
 
     try:
         response = requests.post(url)
