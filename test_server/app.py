@@ -8,3 +8,6 @@ def count():
     data = {"A": video_url, "B": video_url, "C": video_url, "D": video_url, "E": video_url}
     # return jsonify({'message': 'Success'})
     return jsonify(data)
+
+if __name__ == '__main__':
+    app.run(debug=True)
