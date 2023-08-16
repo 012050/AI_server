@@ -63,3 +63,13 @@ def request_data(url='http://localhost:5000/inteligence/activity/'):
     except Exception as e:
         print('API 요청 전송에 실패하였습니다.')
         print(e)
+
+def delete_all_files_in_folder(target_folder):
+    try:
+        for filename in os.listdir(target_folder):
+            file_path = os.path.join(target_folder, filename)
+            if os.path.isfile(file_path):
+                os.remove(file_path)
+                print(f"File '{file_path}' deleted successfully.")
+    except Exception as e:
+        print(f"Error deleting files: {e}")
