@@ -52,3 +52,23 @@ if __name__ == '__main__':
                 process.join()
 
             processes = []
+
+            # 인공지능 실행
+            for data in streams:
+                url = 'http://localhost:5001/object_detection/'
+                process = Process(target=send_data, args=(url, data[0]))
+                processes.append(process)
+
+                if len(processes) >= 2:
+                    for process in processes:
+                        process.start()
+                    for process in processes:
+                        process.join()
+
+                    processes = []
+
+            for process in processes:
+                process.start()
+            for process in processes:
+                process.join()
+            processes = []
