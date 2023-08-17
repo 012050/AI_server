@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request
 
 app = Flask(__name__)
-the_number = 5
+the_number = 23
 video_url = "https://klivecon-orig.fastedge.net/webrtc/test/playlist.m3u8"
 
 @app.route('/inteligence/activity/', methods=['POST'])
