@@ -15,8 +15,6 @@ class TimeChecker:
 
     def time_check(self):
 
-
-        check = 1
         while True:
             current_time = time.localtime()
             current_hour = current_time.tm_hour
@@ -24,11 +22,8 @@ class TimeChecker:
             current_second = current_time.tm_sec
             print(f"현재 시간: {current_hour}시 {current_minute}분 {current_second}초")
 
-            # 타겟 시간에 도달하면 사용자 함수 호출
-            if current_minute == 54:
-            # if current_second == 0:
-            # if current_second == 0 and check == 1:
-            # if current_second % 10 == 0 and check == 1:
+            # 타겟 시간이 되면 데이터 요청
+            if current_minute == 0:
 
                 video_data = request_data(url='http://localhost:5000/inteligence/activity/')
 
@@ -37,8 +32,6 @@ class TimeChecker:
                     self.trans_list.append([data, video_data[data]])
 
                 self.video_data = self.trans_list
-                # check = 0
-                # break
 
             time.sleep(1)
 

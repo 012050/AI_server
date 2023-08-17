@@ -6,7 +6,7 @@ from DataProcess import convert_hls_to_mp4, send_data
 from TimeControl import TimeChecker
 
 VIDEO_FOLDER = 'videos'
-
+# 영상 저장 폴더 생성
 if not os.path.exists(VIDEO_FOLDER):
     os.makedirs(VIDEO_FOLDER)
 

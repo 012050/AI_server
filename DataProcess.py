@@ -52,10 +52,10 @@ def request_data(url='http://localhost:5000/inteligence/activity/'):
         response = requests.post(url)
 
         if response.status_code == 200:
-            print('API 요청이 성공적으로 전송되었습니다.')
+            print('영상 데이터 요청이 성공적으로 전송되었습니다.')
             return response.json()
         else:
-            print('API 요청 전송에 실패하였습니다.')
+            print('영상 데이터 요청에 전송에 실패하였습니다.')
             return response.status_code
 
     except Exception as e:
