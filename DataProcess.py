@@ -29,16 +29,14 @@ def convert_hls_to_mp4(hls_url="https://klivecon-orig.fastedge.net/webrtc/test/p
         print(f"Error occurred: {e}")
 
 # API 서버에 데이터 천송
-def send_data(url='http://localhost:5000/inteligence/activity/'):
-
-    data = {"state": "start"}
+def send_data(url='http://localhost:5000/inteligence/activity/', file_name="videos/TEST_00001.mp4"):
 
     try:
-        response = requests.post(url, json=data)
+        response = requests.get(url+file_name)
 
         if response.status_code == 200:
             print('API 요청이 성공적으로 전송되었습니다.')
-            return 200
+            return response.text
         else:
             print('API 요청 전송에 실패하였습니다.')
             return response.status_code
@@ -63,6 +61,7 @@ def request_data(url='http://localhost:5000/inteligence/activity/'):
     except Exception as e:
         print('API 요청 전송에 실패하였습니다.')
         print(e)
+        return None
 
 def delete_all_files_in_folder(target_folder):
     try:
@@ -73,3 +72,7 @@ def delete_all_files_in_folder(target_folder):
                 print(f"File '{file_path}' deleted successfully.")
     except Exception as e:
         print(f"Error deleting files: {e}")
+
+if __name__ == "__main__":
+    result = send_data(url=f'http://localhost:5001/object_detection/TEST_00001')
+    print(result)
