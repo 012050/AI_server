@@ -1,7 +1,5 @@
 import time
 
-from flask import request
-
 from DataProcess import request_video_data
 
 
