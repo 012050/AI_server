@@ -28,17 +28,21 @@ def convert_hls_to_mp4(hls_url="https://klivecon-orig.fastedge.net/webrtc/test/p
 def send_data(url='http://127.0.0.1:5001/object_detection', file_name=os.getcwd() + "/videos/TEST_00001"):
 
     try:
-        response = requests.get(url+file_name)
-
+        data = {
+            "id": "test_id",
+            "userdevice": "test_device",
+            "filepath": file_name+".mp4"
+        }
+        response = requests.post(url, json=data)
         if response.status_code == 200:
-            print('API 요청이 성공적으로 전송되었습니다.')
+            print('send_data: 인공지능 실행 요청에 성공했습니다.')
             return response.text
         else:
-            print('API 요청 전송에 실패하였습니다.')
+            print('send_data: 인공지능 실행 요청에 실패하였습니다.')
             return response.status_code
 
     except Exception as e:
-        print('API 요청 전송에 실패하였습니다.')
+        print('send_data: 인공지능 실행 요청에 실패하였습니다.')
         print(e)
         return 404
 
