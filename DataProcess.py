@@ -35,14 +35,14 @@ def send_data(url='http://127.0.0.1:5001/object_detection', file_name=os.getcwd(
         }
         response = requests.post(url, json=data)
         if response.status_code == 200:
-            print('send_data: 인공지능 실행 요청에 성공했습니다.')
+            print(f'send_data: ({file_name}) 인공지능 실행 요청에 성공했습니다.')
             return response.text
         else:
-            print('send_data: 인공지능 실행 요청에 실패하였습니다.')
+            print(f'send_data: ({file_name}) 인공지능 실행 요청에 실패하였습니다.')
             return response.status_code
 
     except Exception as e:
-        print('send_data: 인공지능 실행 요청에 실패하였습니다.')
+        print(f'send_data: ({file_name}) 인공지능 실행 요청에 실패하였습니다.')
         print(e)
         return 404
 
