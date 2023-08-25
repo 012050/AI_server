@@ -63,7 +63,7 @@ def request_data(url='http://localhost:5000/inteligence/activity/'):
         print(e)
         return None
 
-def delete_all_files_in_folder(target_folder):
+def delete_all_files_in_folder(target_folder = os.getcwd() + "\\videos"):
     try:
         for filename in os.listdir(target_folder):
             file_path = os.path.join(target_folder, filename)
