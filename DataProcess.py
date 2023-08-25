@@ -3,13 +3,9 @@ import os
 import ffmpeg
 import requests
 
-# URL 포맷 형식 정하기
-# URL 형태가 어떻게 되는지 확인하기
-# JSON 형태로 받아오기
-
 # 영상 저장 함수
 def convert_hls_to_mp4(hls_url="https://klivecon-orig.fastedge.net/webrtc/test/playlist.m3u8", output_file="test", duration=10):
-    file_path="videos/" + output_file + ".mp4"
+    file_path=os.getcwd() +  "\\videos\\" + output_file + ".mp4"
 
     # 파일이 존재하면 삭제
     if os.path.exists(file_path):
@@ -28,8 +24,8 @@ def convert_hls_to_mp4(hls_url="https://klivecon-orig.fastedge.net/webrtc/test/p
     except ffmpeg.Error as e:
         print(f"Error occurred: {e}")
 
-# API 서버에 데이터 천송
-def send_data(url='http://localhost:5000/inteligence/activity/', file_name="videos/TEST_00001.mp4"):
+# 인공지능 서버에 데이터 전송
+def send_data(url='http://127.0.0.1:5001/object_detection', file_name=os.getcwd() + "/videos/TEST_00001"):
 
     try:
         response = requests.get(url+file_name)
@@ -74,5 +70,6 @@ def delete_all_files_in_folder(target_folder):
         print(f"Error deleting files: {e}")
 
 if __name__ == "__main__":
-    result = send_data(url=f'http://localhost:5001/object_detection/TEST_00001')
+    # convert_hls_to_mp4(output_file="TEST_00001")
+    result = send_data(url="http://localhost:5001/object_detection", file_name=os.getcwd() + "/videos/TEST_00001")
     print(result)
