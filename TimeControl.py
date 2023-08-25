@@ -18,7 +18,7 @@ class TimeChecker:
             current_hour = current_time.tm_hour
             current_minute = current_time.tm_min
             current_second = current_time.tm_sec
-            print(f"현재 시간: {current_hour}시 {current_minute}분 {current_second}초")
+            print(f"time_check: 현재 시간: {current_hour}시 {current_minute}분 {current_second}초")
 
             # 타겟 시간이 되면 데이터 요청
             if current_minute == 0:
