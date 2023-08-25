@@ -2,7 +2,7 @@ import time
 
 from flask import request
 
-from DataProcess import request_data
+from DataProcess import request_video_data
 
 
 class TimeChecker:
@@ -25,7 +25,7 @@ class TimeChecker:
             # 타겟 시간이 되면 데이터 요청
             if current_minute == 0:
 
-                video_data = request_data(url='http://localhost:5000/inteligence/activity/')
+                video_data = request_video_data(url='http://localhost:5000/inteligence/activity/')
 
                 # 리스트로 변환
                 for data in video_data:
