@@ -56,6 +56,7 @@ if __name__ == '__main__':
             # 인공지능 실행
             for data in streams:
                 url = 'http://localhost:5001/object_detection'
+                # 인공지능 서버에 데이터 전송
                 process = Process(target=send_data, args=(url, os.getcwd() + "\\videos\\" + data[0]))
                 processes.append(process)
 
