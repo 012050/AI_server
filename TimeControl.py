@@ -8,6 +8,9 @@ class TimeChecker:
         self.video_data = None
         self.trans_list = []
 
+        self.disable = False
+        self.present_time = time.localtime().tm_hour
+
     def now_time(self):
         return time.strftime("%Y-%m-%d-%H:%M:%S", time.localtime(time.time()))
 
@@ -21,7 +24,7 @@ class TimeChecker:
             print(f"time_check: 현재 시간: {current_hour}시 {current_minute}분 {current_second}초")
 
             # 타겟 시간이 되면 데이터 요청
-            if current_minute == 0:
+            if (current_minute == 0 or current_minute == 30) and self.disable is False:
 
                 video_data = request_video_data(url='http://localhost:5000/video/server/')
 
@@ -30,6 +33,11 @@ class TimeChecker:
                     self.trans_list.append([data, video_data[data]])
 
                 self.video_data = self.trans_list
+                self.disable = True
+
+            if self.present_time != current_hour:
+                self.disable = False
+                self.present_time = current_hour
 
             time.sleep(1)
 
