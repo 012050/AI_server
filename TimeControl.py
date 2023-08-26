@@ -23,7 +23,7 @@ class TimeChecker:
             # 타겟 시간이 되면 데이터 요청
             if current_minute == 0:
 
-                video_data = request_video_data(url='http://localhost:5000/inteligence/activity/')
+                video_data = request_video_data(url='http://localhost:5000/video/server/')
 
                 # 리스트로 변환
                 for data in video_data:
