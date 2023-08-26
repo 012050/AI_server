@@ -33,7 +33,7 @@ if __name__ == '__main__':
                 hls_url = stream[1]
                 output_file = stream[0]
 
-                process = Process(target=convert_hls_to_mp4, args=(hls_url, output_file, 3))
+                process = Process(target=convert_hls_to_mp4, args=(hls_url, output_file, 180))
                 processes.append(process)
 
                 # 20개로 나눠서 실행
