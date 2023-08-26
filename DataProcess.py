@@ -38,6 +38,7 @@ def convert_hls_to_mp4(hls_url="https://klivecon-orig.fastedge.net/webrtc/test/p
 def send_data(url='http://127.0.0.1:5001/object_detection', file_name=os.getcwd() + "/videos/TEST_00001"):
 
     try:
+        # 더미 데이터
         data = {
             "id": "test_id",
             "userdevice": "test_device",
