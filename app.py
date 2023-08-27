@@ -30,8 +30,8 @@ if __name__ == '__main__':
 
             # 영상 처리
             for stream in streams:
-                hls_url = stream[1]
-                output_file = stream[0]
+                hls_url = streams[stream][0]
+                output_file = streams[stream][1]
 
                 process = Process(target=convert_hls_to_mp4, args=(hls_url, output_file, 180))
                 processes.append(process)
@@ -56,9 +56,11 @@ if __name__ == '__main__':
             # 인공지능 실행
             for data in streams:
                 url = 'http://localhost:5001/object_detection'
+                filename = VIDEO_FOLDER + streams[data][1]
+                id = streams[data][2]
+                userdevice = streams[data][1]
                 # 인공지능 서버에 데이터 전송
-                # send_data(url, file_name, id, userdevice)
-                process = Process(target=send_data, args=(url, VIDEO_FOLDER + streams[data][2], streams[data][2], streams[data][1]))
+                process = Process(target=send_data, args=(url, filename, id, userdevice))
                 processes.append(process)
 
                 if len(processes) >= 2:

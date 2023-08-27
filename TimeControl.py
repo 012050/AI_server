@@ -6,7 +6,6 @@ from DataProcess import request_video_data
 class TimeChecker:
     def __init__(self):
         self.video_data = None
-        self.trans_list = []
 
         self.disable = False
         self.present_time = time.localtime().tm_hour
@@ -28,11 +27,7 @@ class TimeChecker:
 
                 video_data = request_video_data(url='http://localhost:5000/video/server/')
 
-                # 리스트로 변환
-                for data in video_data:
-                    self.trans_list.append([data, video_data[data]])
-
-                self.video_data = self.trans_list
+                self.video_data = video_data
                 self.disable = True
 
             if self.present_time != current_hour:
