@@ -5,7 +5,7 @@ from multiprocessing import Process
 from DataProcess import convert_hls_to_mp4, send_data
 from TimeControl import TimeChecker
 
-VIDEO_FOLDER = 'videos'
+VIDEO_FOLDER = os.getcwd() + "\\videos\\"
 # 영상 저장 폴더 생성
 if not os.path.exists(VIDEO_FOLDER):
     os.makedirs(VIDEO_FOLDER)
@@ -57,7 +57,8 @@ if __name__ == '__main__':
             for data in streams:
                 url = 'http://localhost:5001/object_detection'
                 # 인공지능 서버에 데이터 전송
-                process = Process(target=send_data, args=(url, os.getcwd() + "\\videos\\" + data[0]))
+                # send_data(url, file_name, id, userdevice)
+                process = Process(target=send_data, args=(url, VIDEO_FOLDER + streams[data][2], streams[data][2], streams[data][1]))
                 processes.append(process)
 
                 if len(processes) >= 2:
