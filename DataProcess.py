@@ -35,13 +35,13 @@ def convert_hls_to_mp4(hls_url="https://klivecon-orig.fastedge.net/webrtc/test/p
             print("최대 재시도 횟수에 도달했습니다. 비디오를 저장하지 못했습니다.")
 
 # 인공지능 서버에 데이터 전송
-def send_data(url='http://127.0.0.1:5001/object_detection', file_name=os.getcwd() + "/videos/TEST_00001"):
+def send_data(url='http://127.0.0.1:5001/object_detection', file_name=os.getcwd() + "/videos/TEST_00001", id="test_id", userdevice="test_device"):
 
     try:
         # 더미 데이터
         data = {
-            "id": "test_id",
-            "userdevice": "test_device",
+            "id": id,
+            "userdevice": userdevice,
             "filepath": file_name+".mp4"
         }
         response = requests.post(url, json=data)
