@@ -57,7 +57,7 @@ def send_data(url='http://127.0.0.1:5001/object_detection', file_name=os.getcwd(
         print(e)
         return 404
 
-def request_video_data(url='http://localhost:5000/inteligence/activity/'):
+def request_video_data(url='http://localhost:5000/video/server/'):
 
     try:
         response = requests.post(url)
