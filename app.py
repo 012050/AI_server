@@ -1,5 +1,6 @@
 import os
 import threading
+import time
 from multiprocessing import Process
 
 from DataProcess import convert_hls_to_mp4, send_data
@@ -66,6 +67,7 @@ if __name__ == '__main__':
                 if len(processes) >= 2:
                     for process in processes:
                         process.start()
+                        time.sleep(0.01)
                     for process in processes:
                         process.join()
 
