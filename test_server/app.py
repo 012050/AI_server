@@ -31,7 +31,7 @@ def video():
         data[file_name] = [
             video_url,
             f"UUID-{random_number(4)}-{random_number(4)}",
-            random_string(16),
+            f"{file_name}-{random_string(16)}",
             ]
     start_number = end_number
     end_number = end_number + the_number
