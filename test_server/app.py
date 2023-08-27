@@ -43,5 +43,13 @@ def api_send():
     print(data)
     return jsonify(data)
 
+@app.route('/reset')
+def reset():
+    global start_number
+    global end_number
+    start_number = 1
+    end_number = the_number + 1
+    return "Reset"
+
 if __name__ == '__main__':
     app.run(debug=True)
