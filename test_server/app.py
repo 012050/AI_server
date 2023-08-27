@@ -1,4 +1,5 @@
 import random
+import string
 
 from flask import Flask, jsonify, request
 
@@ -15,6 +16,11 @@ def random_number(Number_):
     random_number = random.randint(min_value, max_value)
     return int(random_number)
 
+def random_string(length):
+    characters = string.ascii_letters + string.digits
+    result = ''.join(random.choice(characters) for _ in range(length))
+    return result
+
 @app.route('/video/server/', methods=['POST'])
 def video():
     global start_number
@@ -22,7 +28,11 @@ def video():
     data = {}
     for i in range(start_number, end_number):
         file_name = "TEST_" + str(i).zfill(5)
-        data[file_name] = video_url
+        data[file_name] = [
+            video_url,
+            f"UUID-{random_number(4)}-{random_number(4)}",
+            random_string(16),
+            ]
     start_number = end_number
     end_number = end_number + the_number
     return jsonify(data)
