@@ -8,7 +8,7 @@ class TimeChecker:
         self.video_data = None
 
         self.disable = False
-        self.present_time = time.localtime().tm_hour
+        self.present_time = time.localtime().tm_min
 
     def now_time(self):
         return time.strftime("%Y-%m-%d-%H:%M:%S", time.localtime(time.time()))
@@ -30,9 +30,9 @@ class TimeChecker:
                 self.video_data = video_data
                 self.disable = True
 
-            if self.present_time != current_hour:
+            if self.present_time != current_minute:
                 self.disable = False
-                self.present_time = current_hour
+                self.present_time = current_minute
 
             time.sleep(1)
 
