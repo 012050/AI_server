@@ -8,7 +8,7 @@ app = Flask(__name__)
 the_number = 23
 start_number = 1
 end_number = the_number + 1
-video_url = "https://klivecon-orig.fastedge.net/webrtc/test/playlist.m3u8"
+video_url = "http://test1.nifskorea.com:8080/hls/test/index.m3u8"
 
 def random_number(Number_):
     min_value = 10 ** (Number_ - 1)
